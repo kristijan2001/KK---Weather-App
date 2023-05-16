@@ -1,0 +1,42 @@
+<-- O aplikaciji -->
+
+Za rad na ovoj aplikaciji, odlucio sam se za kombinaciju HTML-a, CSS-a i Javascripta. Odabrao sam openweathermap.org API. Aplikacija je responsive, odnosno prilagodljiva je svim velicinama ekrana.
+
+<-- Instrukcije o pokretanju aplikacije -->
+
+Ovaj program je jako jednostavno pokrenuti. U search-bar unesete ime grada koji vas interesuje, nakon toga ce aplikacija izbaciti preporucene gradove, a nakon sto odaberete grad,   aplikacija ce koristeci API izbaciti trenutnu temperaturu, vremensko stanje i ikonicu relevantnu za to vremensko stanje. Ukoliko ste unijeli pogresno ime grada, odnosno ime grada koje se ne nalazi u databazi API-a, vas search bar ce dobiti crveni border, sto signalizira da ste izveli pogresan unos.
+
+
+<-- Objasnjenje HTML-a -->
+
+Poceo sam naravno od HTML-a. Razvio sam osnovnu HTML strukturu, povezao ga sa CSS-om i JS-om, te napravio container u kojem ce se odvijati rad ove aplikacije. Unutar containera napravio sam jos dva diva:
+        1. search (podijeljen na search-bar i search dugme, te divovi za dropdown menu)
+        2. weather (u njemu ce da se naknadno ispisuju podaci vezani za temperaturu, ikonica i vremensko stanje, sve putem Javascripta)
+
+
+<-- Objasnjenje CSS-a -->
+
+Koristeci CSS stilizovao sam stranicu, a koristeci CSS Flex sam rasporedjivao elemente po stranici. Takodje sam uradio Media Query, pa je aplikacija prilagodljiva svim velicinama ekrana.
+
+<-- Objasnjenje Javascripta -->
+Najvazniji dio aplikacije, funkcionalnost odradio sam u Javascriptu.
+
+Prvo sam deklarisao objekat apiKeys koji sadrzi API kljuceve za weather API i API za pozadinsku sliku.
+
+Nakon toga, definisao sam promjenljive timer i selectedIndex, koje sam koristio posle. Uveo sam nove konstante te sam ih povezao sa elementima iz HTML-a koristeci querySelector i getElementbyID.
+
+Definisao sam funkciju getCityInfo, ona sluzi za dobijanje informacija o gradu preko geo API-a i poziva se kod prikazivanja prijedloga i kod pretrage direktno iz search bara (kada jos nisu izasli predlozeni gradovi, nista nije selektovano ili se klikne direknto na search-button).
+
+Nakon toga, definisao sam funkciju fetchWeather, koja se koristi za uzimanje podataka o trenutnom stanju vremena za odabrani grad. Funkcija koristi fetch za uzimanje podataka o klimi sa odgovarajućim parametrima kao što su geografske koordinate grada i API ključ. Nakon uzimanja podataka, funkcija ažurira HTML elemente sa potrebnim informacijama i dodaje odredjene stilove.
+
+Uveo sam displaySuggestions. Ova funkcija se poziva kad se dogodi input event na pretraživaču (input polje). Koristi se setTimeout metoda kako bi se odgodio poziv funkcije kako bi se smanjila učestalost poziva API-ja. U ovoj funkciji se poziva getCityInfo funkcija i na osnovu nje se uzima niz gradova koji se posle prikazuje na osnovu unesenog teksta. Nakon što se pojave sugestije, ažurira se dropdown menu s odgovarajućim rezultatima pretraživanja.
+
+Dodao sam event listenere na pretragu, dugme i druge elemente koji reaguju na akcije korisnika. Ovi event listeneri aktiviraju odgovarajuće funkcije pri događajima poput klika, unosa teksta ili pritiska tastera.
+
+Dodao sam pomoćne funkcije kao što su selectItem, koja se koristi za označavanje i odabir stavke iz dropdown menija  i event listenere za praćenje događaja poput fokusa ili gubitka fokusa na pretrazi.
+
+
+
+<-- Zakljucak -->
+
+Od izazova sa kojima sam se sreo, mogu navesti odabir pravog API-a, te sporo ucitavanje pozadinske slike koristeci API za pozadinsku sliku, sto sam morao rijesiti drugom metodom. Nailazio sam na sitne greske, mada mi nisu oduzele previse vremena. Imao sam dovoljno vremena da zavrsim sve sto sam planirao.
